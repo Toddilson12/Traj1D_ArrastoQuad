@@ -5,5 +5,10 @@ Programa para cálculo de trajetória.
 - Campo gravitacional uniforme
 - ***Soluções analíticas
 
+Atualmente:
+- Coeficiente de arrasto (CD) constante
+- Área transversal de referência (A) constante
+- Massa específica do ar (rho) constante
+
 - Linguagem: C++/14
 - Gráficos: GNUPlot
