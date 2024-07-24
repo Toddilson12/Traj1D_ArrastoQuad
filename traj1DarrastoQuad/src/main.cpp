@@ -5,7 +5,7 @@
 
 
 
-
+ 
 int main()
 {
 	common_input input_data;

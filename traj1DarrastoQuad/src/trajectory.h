@@ -35,7 +35,7 @@ class analytic_trajectory
 	void calculate_t_toApogee();
 	void calculate_h_ofApogee();
 	void calculate_accel_max();
-
+	 
 	void calculate_t_toFall();
 	void calculate_t_flight();
 	void calculate_vel_impact();

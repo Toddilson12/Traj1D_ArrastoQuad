@@ -3,7 +3,7 @@
 #include <string>
 #include <fstream>
 #include "common.h"
-
+ 
 
 class io_manager
 {

@@ -45,7 +45,7 @@ Aceleracao impact
 -----------------
 Tempo total
 -----------------
-*/
+*/ 
 
 void analytic_trajectory::calculate_t_toApogee()
 {

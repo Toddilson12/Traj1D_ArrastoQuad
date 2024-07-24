@@ -11,7 +11,7 @@
 [h0]
 */
 
-
+ 
 struct common_input
 {
 	double gravity;

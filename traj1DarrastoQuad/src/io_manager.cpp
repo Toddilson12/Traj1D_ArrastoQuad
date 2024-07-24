@@ -49,3 +49,4 @@ void io_manager::PrintDataCon(const common_output& output)
 	std::cout << "Velocidade de impacto       (m/s): " << output.vel_impact << "\n";
 	std::cout << "Aceleracao no impacto    (m s^-2): " << output.accel_impact << "\n";
 }
+  
