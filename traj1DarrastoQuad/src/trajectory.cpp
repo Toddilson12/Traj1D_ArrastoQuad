@@ -32,6 +32,76 @@ void analytic_trajectory::CalculateTrajectoryData()
 	calculate_t_flight();
 }
 
+double analytic_trajectory::CalculatePosAscent(double t)
+{
+	if (ptr_InputData == NULL || ptr_OutputData == NULL)
+	{
+		std::cout << "ERRO (SOLVER): ponteiros NULOS\n";
+		exit(-1);
+	}
+	return (ptr_InputData->h0 + (1/kappa) * std::log((std::cos(std::atan(ptr_InputData->vel_ascent0 * std::sqrt(kappa/ptr_InputData->gravity))-t*std::sqrt(kappa*ptr_InputData->gravity))) * std::sqrt(1 + (kappa * ptr_InputData->vel_ascent0 * ptr_InputData->vel_ascent0)/(ptr_InputData->gravity))));
+}
+
+double analytic_trajectory::CalculateVelAscent(double t)
+{
+	if (ptr_InputData == NULL || ptr_OutputData == NULL)
+	{
+		std::cout << "ERRO (SOLVER): ponteiros NULOS\n";
+		exit(-1);
+	}
+	return (std::sqrt(ptr_InputData->gravity/kappa) * std::tan(std::atan(ptr_InputData->vel_ascent0 * std::sqrt(kappa/ptr_InputData->gravity))-t*std::sqrt(ptr_InputData->gravity * kappa)));
+}
+
+double analytic_trajectory::CalculateAccelAscent(double t)
+{
+	if (ptr_InputData == NULL || ptr_OutputData == NULL)
+	{
+		std::cout << "ERRO (SOLVER): ponteiros NULOS\n";
+		exit(-1);
+	}
+	return (-ptr_InputData->gravity) / (std::cos(std::atan(ptr_InputData->vel_ascent0 * std::sqrt(kappa / ptr_InputData->gravity))- t * std::sqrt(kappa * ptr_InputData->gravity)) * std::cos(std::atan(ptr_InputData->vel_ascent0 * std::sqrt(kappa / ptr_InputData->gravity)) - t * std::sqrt(kappa * ptr_InputData->gravity)));
+}
+
+double analytic_trajectory::CalculatePosDescent(double t)
+{
+	if (ptr_InputData == NULL || ptr_OutputData == NULL)
+	{
+		std::cout << "ERRO (SOLVER): ponteiros NULOS\n";
+		exit(-1);
+	}
+	return (ptr_OutputData->h_ofApogee - (1/kappa)*std::log(std::cosh(t * std::sqrt(kappa * ptr_InputData->gravity))));
+}
+
+double analytic_trajectory::CalculateVelDescent(double t)
+{
+	if (ptr_InputData == NULL || ptr_OutputData == NULL)
+	{
+		std::cout << "ERRO (SOLVER): ponteiros NULOS\n";
+		exit(-1);
+	}
+	return (-std::sqrt(ptr_InputData->gravity / kappa) * std::tanh(t * std::sqrt(ptr_InputData->gravity * kappa)));
+}
+
+double analytic_trajectory::CalculateAccelDescent(double t)
+{
+	if (ptr_InputData == NULL || ptr_OutputData == NULL)
+	{
+		std::cout << "ERRO (SOLVER): ponteiros NULOS\n";
+		exit(-1);
+	}
+	return (-ptr_InputData->gravity)/(std::cosh(t * std::sqrt(ptr_InputData->gravity * kappa)) * std::cosh(t * std::sqrt(ptr_InputData->gravity * kappa)));
+}
+
+common_output* const analytic_trajectory::GetOutputData() const
+{
+	if (ptr_OutputData == NULL)
+	{
+		std::cout << "ERRO (SOLVER): ponteiros NULOS\n";
+		exit(-1);
+	}
+	return ptr_OutputData;
+}
+
 /*
 Ordem atual:
 -----------------

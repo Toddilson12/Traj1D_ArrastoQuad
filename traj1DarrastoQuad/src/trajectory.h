@@ -45,6 +45,17 @@ public:
 	analytic_trajectory(common_input* inptr, common_output* outptr);
 
 	void CalculateTrajectoryData();
+
+	double CalculatePosAscent(double t); // t0 = 0
+	double CalculateVelAscent(double t);
+	double CalculateAccelAscent(double t);
+
+	double CalculatePosDescent(double t); // t0 = t_apogee
+	double CalculateVelDescent(double t);
+	double CalculateAccelDescent(double t);
+
+	common_output* const GetOutputData() const;
+
 };
 
 //t_toApogee;
