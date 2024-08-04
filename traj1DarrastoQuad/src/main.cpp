@@ -11,20 +11,36 @@ int main()
 	common_output output_data;
 	
 	io_manager io;
+	int option;
+	int num_point;
 	
-	//io.ReadDataCon(input_data);
-	io.ReadDataFile(input_data, "INSIRA DIRETORIO DO ARQUIVO DE ENTRADA COM O .txt");
+	std::cout << "MODO DE ENTRADA E SAÍDA:\nARQUIVOS: DIGITE 1\nTERMINAL/CONSOLE: DIGITE 2\n";
+	
+	std::cin >> option;
+	
+	std::cout << "NÚMERO DE PONTOS NO GRÁFICO: ";
+	std::cin >> num_point;
 
 	analytic_trajectory inst(&input_data, &output_data);
-	inst.CalculateTrajectoryData();
 
-	io.PrintDataFile(output_data, "INSIRA DIRETORIO DO ARQUIVO DE SAIDA COM O .txt");
+	if (option == 1)
+	{
+		io.ReadDataFile(input_data, "input/input.txt");
+		inst.CalculateTrajectoryData();
+		io.PrintDataFile(output_data, "output/output.txt");
+	}
 	
-	//io.PrintDataCon(output_data);
-	io.SetAmountPoints(50);
-	io.PlotDataInGraph<analytic_trajectory>(inst); //USE "|" para separar as configuracoes e.g. ASCENT_POS | ASCENT_VEL | ...
+	if (option == 2)
+	{
+		io.ReadDataCon(input_data);;
+		inst.CalculateTrajectoryData();
+		io.PrintDataCon(output_data);
+	}
+
+	io.SetAmountPoints(num_point);
+	io.PlotDataInGraph<analytic_trajectory>(inst); //USE "|" para separar as configuracoes e.g. ...(inst, ASCENT_POS | ASCENT_VEL | ...);
 	
-	std::cout << "Aperte Enter para sair do programa\n";
+	std::cout << "\nAperte Enter para sair do programa\n";
 	std::cin.get();
 	return 0;
 }

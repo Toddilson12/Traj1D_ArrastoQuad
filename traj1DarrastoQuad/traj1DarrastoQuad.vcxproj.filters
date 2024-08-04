@@ -45,4 +45,8 @@
     <None Include="bin\x64\Release\traj1DarrastoQuad.exe" />
     <None Include="bin\x64\Release\traj1DarrastoQuad.pdb" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="input\input.txt" />
+    <Text Include="output\output.txt" />
+  </ItemGroup>
 </Project>

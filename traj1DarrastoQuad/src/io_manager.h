@@ -98,7 +98,7 @@ void io_manager::PlotDataInGraph(SOLVER_CLASS solver, unsigned char mode)
 			VECTOR2 point_;
 			point_.x = time;
 			point_.y = calculate(time);
-			std::cout << "(" << point_.x << "; " << point_.y << ")\n";
+			//std::cout << "(" << point_.x << "; " << point_.y << ")\n";
 			gnuInst << doubleToString(point_.x) + " " + doubleToString(point_.y) << std::endl;
 			
 			time += increment;
@@ -112,6 +112,7 @@ void io_manager::PlotDataInGraph(SOLVER_CLASS solver, unsigned char mode)
 
 	gnuInst << "set xrange[0 : 10]" << std::endl; //set range
 	gnuInst << "set yrange[0 : 10]" << std::endl; // set range
+	std::cout << "Para trocar de gráfico, aperte espaço. Não feche as janelas!\n";
 	double time_final = 0.0f;
 	while (mode)
 	{
@@ -120,12 +121,15 @@ void io_manager::PlotDataInGraph(SOLVER_CLASS solver, unsigned char mode)
 		case ASCENT_POS:
 			time_final = solver.GetOutputData()->t_toApogee;
 			gnuInst << "plot \'-\' with linespoint title \'Altura (Asc)\'" << std::endl;
+			
 			lambda_print([&](double time)
 			{
 				return (solver.CalculatePosAscent(time));
 			}, time_final);
-			std::cout << "Pressione enter no terminal para avançar\n";
-			std::cin.get();
+			gnuInst << "pause mouse key" << std::endl;
+			gnuInst << "while (MOUSE_KEY != 32) { pause mouse key }" << std::endl;
+			
+		
 			break;
 		case ASCENT_VEL:
 			time_final = solver.GetOutputData()->t_toApogee;
@@ -134,8 +138,9 @@ void io_manager::PlotDataInGraph(SOLVER_CLASS solver, unsigned char mode)
 				{
 					return (solver.CalculateVelAscent(time));
 				}, time_final);
-			std::cout << "Pressione enter no terminal para avançar\n";
-			std::cin.get();
+			gnuInst << "pause mouse key" << std::endl;
+			gnuInst << "while (MOUSE_KEY != 32) { pause mouse key }" << std::endl;
+
 
 			break;
 		case ASCENT_ACCEL:
@@ -145,8 +150,9 @@ void io_manager::PlotDataInGraph(SOLVER_CLASS solver, unsigned char mode)
 				{
 					return (solver.CalculateAccelAscent(time));
 				}, time_final);
-			std::cout << "Pressione enter no terminal para avançar\n";
-			std::cin.get();
+			gnuInst << "pause mouse key" << std::endl;
+			gnuInst << "while (MOUSE_KEY != 32) { pause mouse key }" << std::endl;
+
 
 			break;
 		case DESCENT_POS:
@@ -156,8 +162,9 @@ void io_manager::PlotDataInGraph(SOLVER_CLASS solver, unsigned char mode)
 				{
 					return (solver.CalculatePosDescent(time));
 				}, time_final);
-			std::cout << "Pressione enter no terminal para avançar\n";
-			std::cin.get();
+			gnuInst << "pause mouse key" << std::endl;
+			gnuInst << "while (MOUSE_KEY != 32) { pause mouse key }" << std::endl;
+
 
 			break;
 		case DESCENT_VEL:
@@ -167,8 +174,9 @@ void io_manager::PlotDataInGraph(SOLVER_CLASS solver, unsigned char mode)
 				{
 					return (solver.CalculateVelDescent(time));
 				}, time_final);
-			std::cout << "Pressione enter no terminal para avançar\n";
-			std::cin.get();
+			gnuInst << "pause mouse key" << std::endl;
+			gnuInst << "while (MOUSE_KEY != 32) { pause mouse key }" << std::endl;
+
 
 			break;
 		case DESCENT_ACCEL:
@@ -178,8 +186,9 @@ void io_manager::PlotDataInGraph(SOLVER_CLASS solver, unsigned char mode)
 				{
 					return (solver.CalculateAccelDescent(time));
 				}, time_final);
-			std::cout << "Pressione enter no terminal para avançar\n";
-			std::cin.get();
+			gnuInst << "pause mouse key" << std::endl;
+			gnuInst << "while (MOUSE_KEY != 32) { pause mouse key }" << std::endl;
+
 
 			break;
 		}
