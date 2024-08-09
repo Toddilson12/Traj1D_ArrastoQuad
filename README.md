@@ -5,7 +5,7 @@ Programa para cálculo de trajetória.
 - Campo gravitacional uniforme
 - ***Soluções analíticas
 - Linguagem: C++/14
-- Gráficos: GNUPlot
+- Gráficos: GNUPlot (Removido temporariamente)
   
 Atualmente:
 - Coeficiente de arrasto (CD) constante
