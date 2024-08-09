@@ -7,7 +7,7 @@
 #include <initializer_list>
 
 #include "common.h"
-#include "gnuplot/gnuplot-iostream.h"
+
 
 
 enum graphic_mode
@@ -59,10 +59,10 @@ public:
 
 	// Graphic system
 	void SetAmountPoints(int num);
-	template<class SOLVER_CLASS>
-	void PlotDataInGraph(SOLVER_CLASS solver, unsigned char mode = ASCENT_POS | ASCENT_VEL | ASCENT_ACCEL | DESCENT_POS | DESCENT_VEL | DESCENT_ACCEL);
+	//template<class SOLVER_CLASS>
+	//void PlotDataInGraph(SOLVER_CLASS solver, unsigned char mode = ASCENT_POS | ASCENT_VEL | ASCENT_ACCEL | DESCENT_POS | DESCENT_VEL | DESCENT_ACCEL);
 };
-
+/*
 static std::string doubleToString(double num)
 {
 	std::ostringstream stream;
@@ -196,3 +196,4 @@ void io_manager::PlotDataInGraph(SOLVER_CLASS solver, unsigned char mode)
 		mask <<= 1;
 	}
 }
+*/

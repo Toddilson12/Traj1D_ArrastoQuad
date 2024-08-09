@@ -12,14 +12,11 @@ int main()
 	
 	io_manager io;
 	int option;
-	int num_point;
+	//int num_point;
 	
-	std::cout << "MODO DE ENTRADA E SAÍDA:\nARQUIVOS: DIGITE 1\nTERMINAL/CONSOLE: DIGITE 2\n";
+	std::cout << "MODO DE ENTRADA E SAIDA:\nARQUIVOS: DIGITE 1\nTERMINAL/CONSOLE: DIGITE 2\n";
 	
 	std::cin >> option;
-	
-	std::cout << "NÚMERO DE PONTOS NO GRÁFICO: ";
-	std::cin >> num_point;
 
 	analytic_trajectory inst(&input_data, &output_data);
 
@@ -37,10 +34,11 @@ int main()
 		io.PrintDataCon(output_data);
 	}
 
-	io.SetAmountPoints(num_point);
-	io.PlotDataInGraph<analytic_trajectory>(inst); //USE "|" para separar as configuracoes e.g. ...(inst, ASCENT_POS | ASCENT_VEL | ...);
+	//io.SetAmountPoints(num_point);
+	//io.PlotDataInGraph<analytic_trajectory>(inst); //USE "|" para separar as configuracoes e.g. ...(inst, ASCENT_POS | ASCENT_VEL | ...);
 	
 	std::cout << "\nAperte Enter para sair do programa\n";
+	std::cin.get();
 	std::cin.get();
 	return 0;
 }
